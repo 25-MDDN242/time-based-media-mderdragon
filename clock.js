@@ -11,17 +11,32 @@ function draw_clock(obj) {
   //        < 0 if no alarm is set
   //        = 0 if the alarm is currently going off
   //        > 0 --> the number of seconds until alarm should go off
-  background(50); //  beige
+  background(171, 228, 255); //sky blue
+  noStroke()
+  fill(173, 250, 147)
+  rect(0, 275, 960, 225)//grass
+
   
-  hop = map(obj.seconds, 0, 59, 0, 960)//seconds moving rabbit
+  rabbitMove = map(obj.seconds, 0, 59, 0, 960)//seconds moving rabbit
 
-  slide = map(obj.minutes, 0, 59, 0, 960)//minutes moving turtle
+  turtleMove = map(obj.minutes, 0, 59, 0, 960)//minutes moving turtle
 
+  if(obj.millis > 500) {
+    image(imgHareJump, rabbitMove+10, 400)
+  } else {
+    image(imgHare, rabbitMove, 400)
+  }
 
-  ellipse(hop, 400, 50, 50)//temp rabbit
-
-  ellipse(slide, 300, 100, 50)//temp turtle
   
+  
+  if(obj.seconds < 20){ //turtle animation
+    image(imgTurtleBack, turtleMove, 300)
+  } else if(obj.seconds > 40){
+    image(imgTurtleForward, turtleMove, 300)
+  } else {
+    image(imgTurtleMid, turtleMove, 300)
+  }
+
   // fill(200); // dark grey
   // textSize(40);
   // textAlign(CENTER, CENTER);
@@ -35,4 +50,4 @@ function draw_clock(obj) {
   // fill(175, 133, 255); // purple
   // ellipse(width / 3 * 2, 350, 150);
 
-}
+}    
