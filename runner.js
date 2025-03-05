@@ -29,6 +29,12 @@ function setup () {
   alarmActiveCheckbox.parent('checkContainer2');
   alarmActiveCheckbox.attribute('disabled','');
 
+  imgHare = loadImage('assets/hare.png');
+  imgHareJump = loadImage('assets/harejump.png');
+  imgTurtleBack = loadImage('assets/turtleback.png');
+  imgTurtleForward = loadImage('assets/turtleforward.png');
+  imgTurtleMid = loadImage('assets/turtlemid.png');
+
   // this is true if debug.js is included
   if(debug_is_on) {
     debug_setup();
