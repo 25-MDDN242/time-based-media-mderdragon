@@ -1,6 +1,8 @@
 /*
  * use p5.js to draw a clock on a 960x500 canvas
  */
+let crowdShake = 0
+let rabbitSize = 1
 
 function draw_clock(obj) {
   // draw your own clock here based on the values of obj:
@@ -15,11 +17,12 @@ function draw_clock(obj) {
 
   background(173, 187, 255); //sky
 
+  noStroke()
+  fill(177, 255, 173) //grass
+  rect(0, 275, 980, 225)
+  
   stroke(255)
   strokeWeight(10)
-  fill(177, 255, 173) //grass
-  rect(-10, 320, 980, 180)
-  
   line(0, 500, 120, 323) //field lines
   line(160, 500, 240, 323)
   line(320, 500, 360, 323)
@@ -27,6 +30,7 @@ function draw_clock(obj) {
   line(640, 500, 600, 323)
   line(800, 500, 720, 323)
   line(960, 500, 840, 323)
+  line(0, 320, 960, 320)
 
   noStroke() //gaps for numbers
   rect(10, 390, 100, 30)
@@ -85,16 +89,53 @@ function draw_clock(obj) {
   text('0', 20, -10, 50, 50)
   pop() 
 
+  console.log(obj.seconds_until_alarm);
+  
+  if(obj.seconds_until_alarm < 0) {
+      push()
+      scale(1.1)
+      image(imgSpectators, 90, 80)
+      pop()
+  } else if(obj.seconds_until_alarm > 0) {
+    if(crowdShake == 0){
+      push()
+      scale(1.1)
+      image(imgSpectators, 90, 80)
+      pop()
+    } else {
+      push()
+      scale(1.1)
+      image(imgSpectators, 90, 85)
+      pop()
+    }
+    crowdShake = crowdShake + 1
+    
+    if(crowdShake > 5) {
+      crowdShake = 0
+    }
+  } 
+
   rabbitMove = map(obj.seconds, 0, 59, 0, 960)//seconds moving rabbit
 
   turtleMove = map(obj.minutes, 0, 59, 0, 960)//minutes moving turtle
 
-  if(obj.millis > 500) { //rabbit animation
-    image(imgHareJump, rabbitMove+10, 410)
+
+  push()
+  translate(rabbitMove, 410)
+  if(obj.seconds > 54 & obj.millis > 0) {
+    rabbitSize = rabbitSize - 0.5
+    scale(rabbitSize)
+    rabbitMove = 1100
+  }
+
+  if(obj.millis > 750) { //rabbit animation
+    image(imgHareJump, 10, 0)
   } else {
-    image(imgHare, rabbitMove, 410)
+    image(imgHare, 0, 0)
   }
   
+  pop()
+
   if(obj.seconds < 20){ //turtle animation
     image(imgTurtleBack, turtleMove, 340)
   } else if(obj.seconds > 40){
