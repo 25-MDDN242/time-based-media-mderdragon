@@ -120,13 +120,13 @@ function draw_clock(obj) {
   turtleMove = map(obj.minutes, 0, 59, 0, 960)//minutes moving turtle
 
 
-  push()
-  translate(rabbitMove, 410)
-  if(obj.seconds > 54 & obj.millis > 0) {
-    rabbitSize = rabbitSize - 0.5
-    scale(rabbitSize)
-    rabbitMove = 1100
-  }
+  // push()
+  // translate(rabbitMove, 410)
+  // if(obj.seconds > 54 & obj.millis > 0) {
+  //   rabbitSize = rabbitSize - 0.5
+  //   scale(rabbitSize)
+  //   rabbitMove = 1100
+  // }
 
   if(obj.millis > 750) { //rabbit animation
     image(imgHareJump, 10, 0)
