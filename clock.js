@@ -3,6 +3,8 @@
  */
 let crowdShake = 0
 let rabbitSize = 1
+let halfStep = 10
+let levelRabbit = 410
 
 function draw_clock(obj) {
   // draw your own clock here based on the values of obj:
@@ -91,7 +93,7 @@ function draw_clock(obj) {
 
   console.log(obj.seconds_until_alarm);
   
-  if(obj.seconds_until_alarm < 0) {
+  if(obj.seconds_until_alarm < 0 || obj.seconds_until_alarm === undefined) {
       push()
       scale(1.1)
       image(imgSpectators, 90, 80)
@@ -120,16 +122,27 @@ function draw_clock(obj) {
   turtleMove = map(obj.minutes, 0, 59, 0, 960)//minutes moving turtle
 
 
-  // push()
-  // translate(rabbitMove, 410)
-  // if(obj.seconds > 54 & obj.millis > 0) {
-  //   rabbitSize = rabbitSize - 0.5
-  //   scale(rabbitSize)
-  //   rabbitMove = 1100
-  // }
+  push()
+
+  if(obj.seconds > 54 && obj.millis > 750) { 
+    rabbitSize = rabbitSize * 0.99
+    levelRabbit = levelRabbit / 0.999
+  } else if(obj.seconds < 55){
+    rabbitSize = 1
+    halfStep = 10
+    levelRabbit = 410
+  } 
+  
+  if(obj.seconds > 54){
+    halfStep = 0
+    rabbitMove = 900
+  }
+
+  translate(rabbitMove, levelRabbit)
+  scale(rabbitSize)
 
   if(obj.millis > 750) { //rabbit animation
-    image(imgHareJump, 10, 0)
+    image(imgHareJump, halfStep, 0)
   } else {
     image(imgHare, 0, 0)
   }
