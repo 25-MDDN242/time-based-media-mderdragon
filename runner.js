@@ -35,6 +35,7 @@ function setup () {
   imgTurtleForward = loadImage('assets/turtleforward.png');
   imgTurtleMid = loadImage('assets/turtlemid.png');
   imgSpectators = loadImage('assets/spectators.png');
+  imgTree = loadImage('assets/tree.png')
 
   // this is true if debug.js is included
   if(debug_is_on) {

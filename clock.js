@@ -3,8 +3,10 @@
  */
 let crowdShake = 0
 let rabbitSize = 1
-let halfStep = 10
-let levelRabbit = 410
+let levelRabbit = 410 
+let scaleCheck = 55
+let rabbitHole = 890
+let minuteCheck = 51
 
 function draw_clock(obj) {
   // draw your own clock here based on the values of obj:
@@ -94,21 +96,12 @@ function draw_clock(obj) {
   console.log(obj.seconds_until_alarm);
   
   if(obj.seconds_until_alarm < 0 || obj.seconds_until_alarm === undefined) {
-      push()
-      scale(1.1)
-      image(imgSpectators, 90, 80)
-      pop()
+      image(imgSpectators, 0, 25)
   } else if(obj.seconds_until_alarm > 0) {
     if(crowdShake == 0){
-      push()
-      scale(1.1)
-      image(imgSpectators, 90, 80)
-      pop()
+      image(imgSpectators, 0, 25)
     } else {
-      push()
-      scale(1.1)
-      image(imgSpectators, 90, 85)
-      pop()
+      image(imgSpectators, 0, 30)
     }
     crowdShake = crowdShake + 1
     
@@ -119,44 +112,81 @@ function draw_clock(obj) {
 
   rabbitMove = map(obj.seconds, 0, 59, 0, 960)//seconds moving rabbit
 
-  turtleMove = map(obj.minutes, 0, 59, 0, 960)//minutes moving turtle
+  turtleMove = map(obj.minutes, 0, 59, 0, 905)//minutes moving turtle
 
+  if(obj.seconds < 20){ //turtle animation
+    image(imgTurtleBack, turtleMove - 35, 340)
+  } else if(obj.seconds > 40){
+    image(imgTurtleForward, turtleMove - 35, 340)
+  } else {
+    image(imgTurtleMid, turtleMove - 35, 340)
+  }
 
-  push()
+  if(obj.minutes > 50) {
+    if(obj.seconds < 20){ //turtle animation
+      image(imgTurtleBack, turtleMove - 940, 340)
+    } else if(obj.seconds > 40){
+      image(imgTurtleForward, turtleMove - 940, 340)
+    } else {
+      image(imgTurtleMid, turtleMove - 940, 340)
+    }
+  }
 
-  if(obj.seconds > 54 && obj.millis > 750) { 
-    rabbitSize = rabbitSize * 0.99
-    levelRabbit = levelRabbit / 0.999
-  } else if(obj.seconds < 55){
-    rabbitSize = 1
-    halfStep = 10
-    levelRabbit = 410
+  if(obj.minutes < 9) {
+    if(obj.seconds < 20){ //turtle animation
+      image(imgTurtleBack, turtleMove + 870, 340)
+    } else if(obj.seconds > 40){
+      image(imgTurtleForward, turtleMove + 870, 340)
+    } else {
+      image(imgTurtleMid, turtleMove + 870, 340)
+    }
+  }
+
+  image(imgTree, 5, 0)
+
+  if(obj.seconds == scaleCheck) { 
+    rabbitSize = rabbitSize * 0.8
+    levelRabbit = levelRabbit / 0.98
+    scaleCheck = scaleCheck + 1
+    rabbitHole = rabbitHole + 6
   } 
   
-  if(obj.seconds > 54){
-    halfStep = 0
-    rabbitMove = 900
+  if(obj.seconds == 0) {
+    rabbitSize = 1
+    scaleCheck = 55
+    levelRabbit = 410
+    rabbitHole = 890
   }
+
+  if(obj.seconds > 54){
+    rabbitMove = rabbitHole
+  }
+
+  push()
 
   translate(rabbitMove, levelRabbit)
   scale(rabbitSize)
 
   if(obj.millis > 750) { //rabbit animation
-    image(imgHareJump, halfStep, 0)
+    image(imgHareJump, 10, 0)
   } else {
     image(imgHare, 0, 0)
   }
-  
+
   pop()
 
-  if(obj.seconds < 20){ //turtle animation
-    image(imgTurtleBack, turtleMove, 340)
-  } else if(obj.seconds > 40){
-    image(imgTurtleForward, turtleMove, 340)
-  } else {
-    image(imgTurtleMid, turtleMove, 340)
-  }
+  push()
 
+  translate(rabbitMove + 10, 410)
+
+  if(obj.seconds > 54){
+    if(obj.millis > 750) { //rabbit animation
+      image(imgHareJump, -940, 0)
+    } else {
+      image(imgHare, -950, 0)
+    }  
+  } 
+  pop()
 
   // fill(200); // dark grey
   // textSize(40);
