@@ -12,3 +12,5 @@ My idea is to create a clock based off the story of 'The Tortoise and the Hare'.
 Currently I have loaded in the animals and spectators, and designed the field lines using JS. The animals move in time with small animations but need to be adjusted to fit the field lines. As opposed to a zoom for the alarm, I will have all the spectators yell at the hare with a giant speech bubble. Currently they shake in anticipation when the alarm is set. 
 
 Made hare shrink in increments to 'enter' a tree burrow. Also added smooth entrance and exits of the animals to ensure they cross the start and finish lines in time with seconds/minutes.
+
+Spectators now yell at hare to wake up when alarm is going off. Added nap sign to tree.

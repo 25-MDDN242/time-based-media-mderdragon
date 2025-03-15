@@ -36,6 +36,9 @@ function setup () {
   imgTurtleMid = loadImage('assets/turtlemid.png');
   imgSpectators = loadImage('assets/spectators.png');
   imgTree = loadImage('assets/tree.png')
+  imgSpeech = loadImage('assets/speech.png')
+  imgStart = loadImage('assets/start.png')
+  imgNumbers = loadImage('assets/fieldnumbers.png')
 
   // this is true if debug.js is included
   if(debug_is_on) {

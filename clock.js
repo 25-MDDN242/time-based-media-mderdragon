@@ -36,79 +36,47 @@ function draw_clock(obj) {
   line(960, 500, 840, 323)
   line(0, 320, 960, 320)
 
-  noStroke() //gaps for numbers
-  rect(10, 390, 100, 30)
-  rect(100, 380, 840, 50)
+  image(imgNumbers, 0, 0)
 
-  angleMode(DEGREES)
-
-  fill(255)
-  textSize(35)
-  textStyle(BOLD)
-
-  push() //field numbers
-  translate(80, 385)
-  rotate(90)
-  text('0', 10, 0, 50, 50)
-  pop()
-
-  push()
-  translate(225, 385)
-  rotate(90)
-  text('1', 0, 0, 50, 50)
-  text('0', 20, 10, 50, 50)
-  pop()
-
-  push()
-  translate(360, 385)
-  rotate(90)
-  text('2', 0, 0, 50, 50)
-  text('0', 20, 5, 50, 50)
-  pop()
-
-  push()
-  translate(495, 385)
-  rotate(90)
-  text('30', 0, 0, 50, 50)
-  pop()
-
-  push()
-  translate(630, 385)
-  rotate(90)
-  text('4', 0, 0, 50, 50)
-  text('0', 20, -5, 50, 50)
-  pop()
-
-  push()
-  translate(765, 385)
-  rotate(90)
-  text('5', 0, 0, 50, 50)
-  text('0', 20, -10, 50, 50)
-  pop()
-
-  push()
-  translate(905, 385)
-  rotate(90)
-  text('6', 0, 0, 50, 50)
-  text('0', 20, -10, 50, 50)
-  pop() 
-
-  console.log(obj.seconds_until_alarm);
+  console.log(obj.seconds_until_alarm); //alarm setup
   
   if(obj.seconds_until_alarm < 0 || obj.seconds_until_alarm === undefined) {
+      image(imgSpectators, 0, 25) //still spectators
+  } else if(obj.seconds_until_alarm > 0) { //spectators shake when alarm is set
+      if(crowdShake == 0){
       image(imgSpectators, 0, 25)
-  } else if(obj.seconds_until_alarm > 0) {
-    if(crowdShake == 0){
-      image(imgSpectators, 0, 25)
-    } else {
+      } else {
       image(imgSpectators, 0, 30)
-    }
-    crowdShake = crowdShake + 1
-    
-    if(crowdShake > 5) {
+      }
+      crowdShake = crowdShake + 1
+
+    if(crowdShake > 5) { //controls shake frequency
       crowdShake = 0
     }
-  } 
+  } if(obj.seconds_until_alarm == 0) { //creates speech bubble when alarm is going off
+    image(imgSpeech, 0, 20)
+    fill(0)
+    noStroke()
+    textSize(25)
+    textFont('Courier New')
+    text('WAKE UP YA STUPID RABBIT!!!', 250, 50, 700, 50)
+    
+      if(crowdShake == 0){
+        image(imgSpectators, 0, 25)
+        } else {
+        image(imgSpectators, 0, 30)
+        }
+        crowdShake = crowdShake + 1
+  
+      if(crowdShake > 5) {
+        crowdShake = 0
+      }
+  }
+  
+  stroke(0)
+  strokeWeight(3)
+  fill(110, 83, 59)
+  rect(115, 170, 10, 150)//back start post
 
   rabbitMove = map(obj.seconds, 0, 59, 0, 960)//seconds moving rabbit
 
@@ -123,7 +91,7 @@ function draw_clock(obj) {
   }
 
   if(obj.minutes > 50) {
-    if(obj.seconds < 20){ //turtle animation
+    if(obj.seconds < 20){ //turtle smooth entrance
       image(imgTurtleBack, turtleMove - 940, 340)
     } else if(obj.seconds > 40){
       image(imgTurtleForward, turtleMove - 940, 340)
@@ -133,7 +101,7 @@ function draw_clock(obj) {
   }
 
   if(obj.minutes < 9) {
-    if(obj.seconds < 20){ //turtle animation
+    if(obj.seconds < 20){ //turtle smooth exit
       image(imgTurtleBack, turtleMove + 870, 340)
     } else if(obj.seconds > 40){
       image(imgTurtleForward, turtleMove + 870, 340)
@@ -142,23 +110,42 @@ function draw_clock(obj) {
     }
   }
 
-  image(imgTree, 5, 0)
+  image(imgTree, 5, 0) //tree
+  stroke(0)
+  strokeWeight(3)
+  fill(194, 168, 130)
+  beginShape() //nap sign on tree
+  vertex(910, 250)
+  vertex(950, 250)
+  vertex(950, 350)
+  vertex(930, 370)
+  vertex(910, 350)
+  endShape(CLOSE)
+  noStroke()
+  fill(0)
+  textSize(25)
+  textStyle(BOLD)
+  textFont('Courier New')
+  text('N', 922, 260, 50, 50)
+  text('A', 922, 283, 50, 50)
+  text('P', 922, 306, 50, 50)
+  text('S', 922, 329, 50, 50)
 
-  if(obj.seconds == scaleCheck) { 
+  if(obj.seconds == scaleCheck) { //controls rabbit exit
     rabbitSize = rabbitSize * 0.8
     levelRabbit = levelRabbit / 0.98
     scaleCheck = scaleCheck + 1
     rabbitHole = rabbitHole + 6
   } 
   
-  if(obj.seconds == 0) {
+  if(obj.seconds == 0) { //resets for rabbit exit
     rabbitSize = 1
     scaleCheck = 55
     levelRabbit = 410
     rabbitHole = 890
   }
 
-  if(obj.seconds > 54){
+  if(obj.seconds > 54){ //controls rabbit exit
     rabbitMove = rabbitHole
   }
 
@@ -177,28 +164,49 @@ function draw_clock(obj) {
 
   push()
 
-  translate(rabbitMove + 10, 410)
+  translate(rabbitMove, 410)
 
   if(obj.seconds > 54){
-    if(obj.millis > 750) { //rabbit animation
-      image(imgHareJump, -940, 0)
+    if(obj.millis > 750) { //rabbit smooth entrance
+      image(imgHareJump, -920, 0)
     } else {
-      image(imgHare, -950, 0)
+      image(imgHare, -930, 0)
     }  
   } 
   pop()
 
-  // fill(200); // dark grey
-  // textSize(40);
-  // textAlign(CENTER, CENTER);
-  // text("YOUR MAIN CLOCK CODE GOES HERE", width / 2, 200);
+  stroke(0)
+  fill(110, 83, 59)
+  rect(0, 340, 10, 150)//front start post
+  fill(255)
+  beginShape()//start banner
+  vertex(10, 340)
+  vertex(125, 170)
+  vertex(125, 220)
+  vertex(10, 390)
+  endShape(CLOSE)
+  fill(0)
+  noStroke()
+  beginShape() //checker pattern
+  vertex(10, 340)
+  vertex(25, 320)
+  vertex(25, 345)
+  vertex(40, 320)
+  vertex(40, 345)
+  vertex(25, 365)
+  vertex(25, 345)
+  vertex(10, 365)
+  endShape(CLOSE)
+  beginShape()
+  vertex(95, 215)
+  vertex(110, 195)
+  vertex(110, 220)
+  vertex(125, 195)
+  vertex(125, 220)
+  vertex(110, 240)
+  vertex(110, 220)
+  vertex(95, 240)
+  endShape(CLOSE)
 
-
-  // fill(249, 140, 255);// pink
-  // ellipse(width / 3, 350, 150);
-  // fill(140, 255, 251) // blue
-  // ellipse(width / 2, 350, 150);
-  // fill(175, 133, 255); // purple
-  // ellipse(width / 3 * 2, 350, 150);
-
+  image(imgStart, 0, 0)
 }
