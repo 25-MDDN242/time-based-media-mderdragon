@@ -13,4 +13,6 @@ Currently I have loaded in the animals and spectators, and designed the field li
 
 Made hare shrink in increments to 'enter' a tree burrow. Also added smooth entrance and exits of the animals to ensure they cross the start and finish lines in time with seconds/minutes.
 
-Spectators now yell at hare to wake up when alarm is going off. Added nap sign to tree.
+Spectators now yell at hare to wake up when alarm is going off. Added nap sign to tree, and start flag to balance the image. Changed the field numbers to a loaded in images for a cleaner look.
+
+Confetti plays at the end of each hour. The sky cycles through a series of colours indicating the hour, including a night cycle which also applies a shadow to the setting.

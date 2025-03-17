@@ -7,6 +7,7 @@ let levelRabbit = 410
 let scaleCheck = 55
 let rabbitHole = 890
 let minuteCheck = 51
+let confettiFall =  0
 
 function draw_clock(obj) {
   // draw your own clock here based on the values of obj:
@@ -19,11 +20,33 @@ function draw_clock(obj) {
   //        = 0 if the alarm is currently going off
   //        > 0 --> the number of seconds until alarm should go off
 
-  background(173, 187, 255); //sky
+  let sky = color(255)
+  let midday = color(173, 187, 255)
+  let dawn = color(250, 212, 192)
+  let midnight = color(78, 72, 138)
 
-  noStroke()
+  skyChange = map(obj.hours, 0, 23, 0, 4)
+
+  if(obj.hours == 0) {
+    sky = midnight
+  } else if(obj.hours == 12) {
+    sky = midday
+  } else if(obj.hours < 6) {
+    sky = lerpColor(midnight, dawn, skyChange)
+  } else if(obj.hours < 12) {
+    sky = lerpColor(dawn, midday, skyChange-1)
+  } else if (obj.hours > 17) {
+    sky = lerpColor(dawn, midnight, skyChange-3)
+  } else if(obj.hours > 11) {
+    sky = lerpColor(midday, dawn, skyChange-2)
+  }
+
+  background(sky);
+
+  stroke(0)
+  strokeWeight(3)
   fill(177, 255, 173) //grass
-  rect(0, 275, 980, 225)
+  rect(-5, 275, 990, 230)
   
   stroke(255)
   strokeWeight(10)
@@ -209,4 +232,49 @@ function draw_clock(obj) {
   endShape(CLOSE)
 
   image(imgStart, 0, 0)
+
+  if(obj.minutes == 0) {
+    fill(255, 128, 132)//red
+    rect(100, confettiFall, 20, 20)
+    rect(250, confettiFall - 350, 20, 20)
+    rect(500, confettiFall - 400, 20, 20)
+    rect(700, confettiFall - 100, 20, 20)
+    rect(800, confettiFall - 250, 20, 20)
+    fill(249, 255, 128)//yellow
+    rect(300, confettiFall - 50, 20, 20)
+    rect(100, confettiFall - 300, 20, 20)
+    rect(400, confettiFall - 150, 20, 20)
+    rect(750, confettiFall - 400, 20, 20)
+    rect(900, confettiFall - 100, 20, 20)
+    fill(200, 128, 255)//purple
+    rect(100, confettiFall - 200, 20, 20)
+    rect(600, confettiFall, 20, 20)
+    rect(400, confettiFall - 300, 20, 20)
+    rect(650, confettiFall - 250, 20, 20)
+    rect(500, confettiFall - 100, 20, 20)
+    fill(135, 255, 233)//teal
+    rect(100, confettiFall - 400, 20, 20)
+    rect(550, confettiFall - 300, 20, 20)
+    rect(200, confettiFall - 100, 20, 20)
+    rect(800, confettiFall, 20, 20)
+    rect(300, confettiFall - 250, 20, 20)
+
+    confettiFall = confettiFall + 5
+  } else {
+    confettiFall = 0
+  }
+
+  shadow = map(obj.hours, 0, 23, 0, 400)
+
+
+  if(obj.hours > 17) {
+    midnight.setAlpha(shadow-300)
+    fill(midnight)
+    rect(0, 0, 960, 500)
+  } else if(obj.hours < 6) {
+    midnight.setAlpha(-shadow+100)
+    fill(midnight)
+    rect(0, 0, 960, 500)
+  }
+
 }
