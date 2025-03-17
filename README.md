@@ -16,3 +16,5 @@ Made hare shrink in increments to 'enter' a tree burrow. Also added smooth entra
 Spectators now yell at hare to wake up when alarm is going off. Added nap sign to tree, and start flag to balance the image. Changed the field numbers to a loaded in images for a cleaner look.
 
 Confetti plays at the end of each hour. The sky cycles through a series of colours indicating the hour, including a night cycle which also applies a shadow to the setting.
+
+Travelling sun graphic added to background sky during day cycle. Fixed minor issue to sync hare with field lines.

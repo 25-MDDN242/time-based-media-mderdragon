@@ -4,10 +4,11 @@
 let crowdShake = 0
 let rabbitSize = 1
 let levelRabbit = 410 
-let scaleCheck = 55
+let scaleCheck = 57
 let rabbitHole = 890
 let minuteCheck = 51
 let confettiFall =  0
+let sunY = 0
 
 function draw_clock(obj) {
   // draw your own clock here based on the values of obj:
@@ -42,6 +43,67 @@ function draw_clock(obj) {
   }
 
   background(sky);
+
+  sunX = map(obj.hours, 0, 23, -480, 1440)
+  sunY = map(obj.hours, 0, 23, 500, 0)
+
+  if(obj.hours > 5 && obj.hours < 12) {
+    push()
+    translate(sunX - 480, sunY - 500)//sun movement
+    fill(255)
+    ellipse(480, 250, 100, 100)//sun
+    strokeWeight(10)
+    stroke(255)
+    line(480, 250, -100, 550)
+    line(480, 250, 960, 500)
+    line(480, 250, 0, 0)
+    line(480, 250, 960, 0)
+    line(480, 250, 480, 0)
+    line(480, 250, 480, 550)
+    line(480, 250, -480, 250)
+    line(480, 250, 1440, 250)
+    line(480, 250, -480, 0)
+    line(480, 250, -480, 500)
+    line(480, 250, 1440, 0)
+    line(480, 250, 1440, 500)
+    line(480, 250, 160, 0)
+    line(480, 250, 320, 0)
+    line(480, 250, 640, 0)
+    line(480, 250, 800, 0)
+    line(480, 250, 160, 550)
+    line(480, 250, 320, 550)
+    line(480, 250, 640, 550)
+    line(480, 250, 800, 550)
+    pop()
+  } else if(obj.hours > 11 && obj.hours < 18) {
+    push()
+    translate(sunX - 480, -sunY)//sun movement
+    fill(255)
+    ellipse(480, 250, 100, 100)//sun
+    strokeWeight(10)
+    stroke(255)
+    line(480, 250, -100, 550)
+    line(480, 250, 960, 500)
+    line(480, 250, 0, 0)
+    line(480, 250, 960, 0)
+    line(480, 250, 480, 0)
+    line(480, 250, 480, 550)
+    line(480, 250, -480, 250)
+    line(480, 250, 1440, 250)
+    line(480, 250, -480, 0)
+    line(480, 250, -480, 500)
+    line(480, 250, 1440, 0)
+    line(480, 250, 1440, 500)
+    line(480, 250, 160, 0)
+    line(480, 250, 320, 0)
+    line(480, 250, 640, 0)
+    line(480, 250, 800, 0)
+    line(480, 250, 160, 550)
+    line(480, 250, 320, 550)
+    line(480, 250, 640, 550)
+    line(480, 250, 800, 550)
+    pop()
+  }
 
   stroke(0)
   strokeWeight(3)
@@ -101,35 +163,35 @@ function draw_clock(obj) {
   fill(110, 83, 59)
   rect(115, 170, 10, 150)//back start post
 
-  rabbitMove = map(obj.seconds, 0, 59, 0, 960)//seconds moving rabbit
+  rabbitMove = map(obj.seconds, 0, 59, 0, 920)//seconds moving rabbit
 
   turtleMove = map(obj.minutes, 0, 59, 0, 905)//minutes moving turtle
 
   if(obj.seconds < 20){ //turtle animation
-    image(imgTurtleBack, turtleMove - 35, 340)
+    image(imgTurtleBack, turtleMove - 35, 320)
   } else if(obj.seconds > 40){
-    image(imgTurtleForward, turtleMove - 35, 340)
+    image(imgTurtleForward, turtleMove - 35, 320)
   } else {
-    image(imgTurtleMid, turtleMove - 35, 340)
+    image(imgTurtleMid, turtleMove - 35, 320)
   }
 
   if(obj.minutes > 50) {
     if(obj.seconds < 20){ //turtle smooth entrance
-      image(imgTurtleBack, turtleMove - 940, 340)
+      image(imgTurtleBack, turtleMove - 940, 320)
     } else if(obj.seconds > 40){
-      image(imgTurtleForward, turtleMove - 940, 340)
+      image(imgTurtleForward, turtleMove - 940, 320)
     } else {
-      image(imgTurtleMid, turtleMove - 940, 340)
+      image(imgTurtleMid, turtleMove - 940, 320)
     }
   }
 
   if(obj.minutes < 9) {
     if(obj.seconds < 20){ //turtle smooth exit
-      image(imgTurtleBack, turtleMove + 870, 340)
+      image(imgTurtleBack, turtleMove + 870, 320)
     } else if(obj.seconds > 40){
-      image(imgTurtleForward, turtleMove + 870, 340)
+      image(imgTurtleForward, turtleMove + 870, 320)
     } else {
-      image(imgTurtleMid, turtleMove + 870, 340)
+      image(imgTurtleMid, turtleMove + 870, 320)
     }
   }
 
@@ -155,20 +217,20 @@ function draw_clock(obj) {
   text('S', 922, 329, 50, 50)
 
   if(obj.seconds == scaleCheck) { //controls rabbit exit
-    rabbitSize = rabbitSize * 0.8
-    levelRabbit = levelRabbit / 0.98
+    rabbitSize = rabbitSize * 0.7
+    levelRabbit = levelRabbit / 0.97
     scaleCheck = scaleCheck + 1
     rabbitHole = rabbitHole + 6
   } 
   
   if(obj.seconds == 0) { //resets for rabbit exit
     rabbitSize = 1
-    scaleCheck = 55
+    scaleCheck = 57
     levelRabbit = 410
     rabbitHole = 890
   }
 
-  if(obj.seconds > 54){ //controls rabbit exit
+  if(obj.seconds > 56){ //controls rabbit exit
     rabbitMove = rabbitHole
   }
 
@@ -189,11 +251,11 @@ function draw_clock(obj) {
 
   translate(rabbitMove, 410)
 
-  if(obj.seconds > 54){
+  if(obj.seconds > 56){
     if(obj.millis > 750) { //rabbit smooth entrance
-      image(imgHareJump, -920, 0)
+      image(imgHareJump, -910, 0)
     } else {
-      image(imgHare, -930, 0)
+      image(imgHare, -920, 0)
     }  
   } 
   pop()
@@ -276,5 +338,6 @@ function draw_clock(obj) {
     fill(midnight)
     rect(0, 0, 960, 500)
   }
+
 
 }
