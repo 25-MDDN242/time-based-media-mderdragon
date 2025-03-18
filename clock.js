@@ -28,7 +28,7 @@ function draw_clock(obj) {
 
   skyChange = map(obj.hours, 0, 23, 0, 4)
 
-  if(obj.hours == 0) {
+  if(obj.hours == 0) { //setting lerpcolours between hours
     sky = midnight
   } else if(obj.hours == 12) {
     sky = midday
@@ -47,11 +47,11 @@ function draw_clock(obj) {
   sunX = map(obj.hours, 0, 23, -480, 1440)
   sunY = map(obj.hours, 0, 23, 500, 0)
 
-  if(obj.hours > 5 && obj.hours < 12) {
+  if(obj.hours > 4 && obj.hours < 12) { //sun ascent
     push()
     translate(sunX - 480, sunY - 500)//sun movement
     fill(255)
-    ellipse(480, 250, 100, 100)//sun
+    ellipse(480, 250, 100, 100)//sun graphic
     strokeWeight(10)
     stroke(255)
     line(480, 250, -100, 550)
@@ -60,8 +60,8 @@ function draw_clock(obj) {
     line(480, 250, 960, 0)
     line(480, 250, 480, 0)
     line(480, 250, 480, 550)
-    line(480, 250, -480, 250)
-    line(480, 250, 1440, 250)
+    line(480, 250, -580, 250)
+    line(480, 250, 1500, 250)
     line(480, 250, -480, 0)
     line(480, 250, -480, 500)
     line(480, 250, 1440, 0)
@@ -75,11 +75,11 @@ function draw_clock(obj) {
     line(480, 250, 640, 550)
     line(480, 250, 800, 550)
     pop()
-  } else if(obj.hours > 11 && obj.hours < 18) {
+  } else if(obj.hours > 11 && obj.hours < 19) { //sun descent
     push()
     translate(sunX - 480, -sunY)//sun movement
     fill(255)
-    ellipse(480, 250, 100, 100)//sun
+    ellipse(480, 250, 100, 100)//sun graphic
     strokeWeight(10)
     stroke(255)
     line(480, 250, -100, 550)
@@ -88,8 +88,8 @@ function draw_clock(obj) {
     line(480, 250, 960, 0)
     line(480, 250, 480, 0)
     line(480, 250, 480, 550)
-    line(480, 250, -480, 250)
-    line(480, 250, 1440, 250)
+    line(480, 250, -580, 250)
+    line(480, 250, 1500, 250)
     line(480, 250, -480, 0)
     line(480, 250, -480, 500)
     line(480, 250, 1440, 0)
@@ -123,6 +123,8 @@ function draw_clock(obj) {
 
   image(imgNumbers, 0, 0)
 
+  image(imgLamp, 0, 0)
+
   console.log(obj.seconds_until_alarm); //alarm setup
   
   if(obj.seconds_until_alarm < 0 || obj.seconds_until_alarm === undefined) {
@@ -146,7 +148,7 @@ function draw_clock(obj) {
     textFont('Courier New')
     text('WAKE UP YA STUPID RABBIT!!!', 250, 50, 700, 50)
     
-      if(crowdShake == 0){
+      if(crowdShake == 0){ //shakes spectators when alarm is going off
         image(imgSpectators, 0, 25)
         } else {
         image(imgSpectators, 0, 30)
@@ -272,7 +274,7 @@ function draw_clock(obj) {
   endShape(CLOSE)
   fill(0)
   noStroke()
-  beginShape() //checker pattern
+  beginShape() //checker pattern on banner
   vertex(10, 340)
   vertex(25, 320)
   vertex(25, 345)
@@ -293,51 +295,72 @@ function draw_clock(obj) {
   vertex(95, 240)
   endShape(CLOSE)
 
-  image(imgStart, 0, 0)
+  image(imgStart, 0, 0)//writing on start banner
 
   if(obj.minutes == 0) {
-    fill(255, 128, 132)//red
+    fill(255, 128, 132)//red confetti
     rect(100, confettiFall, 20, 20)
     rect(250, confettiFall - 350, 20, 20)
     rect(500, confettiFall - 400, 20, 20)
     rect(700, confettiFall - 100, 20, 20)
     rect(800, confettiFall - 250, 20, 20)
-    fill(249, 255, 128)//yellow
+    fill(249, 255, 128)//yellow confetti
     rect(300, confettiFall - 50, 20, 20)
     rect(100, confettiFall - 300, 20, 20)
     rect(400, confettiFall - 150, 20, 20)
     rect(750, confettiFall - 400, 20, 20)
     rect(900, confettiFall - 100, 20, 20)
-    fill(200, 128, 255)//purple
+    fill(200, 128, 255)//purple confetti
     rect(100, confettiFall - 200, 20, 20)
     rect(600, confettiFall, 20, 20)
     rect(400, confettiFall - 300, 20, 20)
     rect(650, confettiFall - 250, 20, 20)
     rect(500, confettiFall - 100, 20, 20)
-    fill(135, 255, 233)//teal
+    fill(135, 255, 233)//teal confetti
     rect(100, confettiFall - 400, 20, 20)
     rect(550, confettiFall - 300, 20, 20)
     rect(200, confettiFall - 100, 20, 20)
     rect(800, confettiFall, 20, 20)
     rect(300, confettiFall - 250, 20, 20)
 
-    confettiFall = confettiFall + 5
+    confettiFall = confettiFall + 5 //confetti falling
   } else {
-    confettiFall = 0
+    confettiFall = 0 //resets confetti
   }
 
   shadow = map(obj.hours, 0, 23, 0, 400)
 
+ if(obj.hours > 18) {
+    push()
+    angleMode(DEGREES)
+    beginClip({invert: true}) //lamp light
+    triangle(100, 425, 35, 20, 850, 425)
+    arc(475, 425, 749, 100, 0, 180)
+    endClip()
 
-  if(obj.hours > 17) {
     midnight.setAlpha(shadow-300)
+    midnight.setRed(0)
+    midnight.setGreen(0)
     fill(midnight)
-    rect(0, 0, 960, 500)
-  } else if(obj.hours < 6) {
+    rect(0, 0, 960, 500) //shadow on scene increasing
+    pop()
+
+    image(imgStars, 0, 0)
+  } else if(obj.hours < 5) {
+    push()
+    angleMode(DEGREES)
+    beginClip({invert: true}) //lamp light
+    triangle(100, 425, 35, 20, 850, 425)
+    arc(475, 425, 749, 100, 0, 180)
+    endClip()
+
     midnight.setAlpha(-shadow+100)
+    midnight.setRed(0)
+    midnight.setGreen(0)
     fill(midnight)
-    rect(0, 0, 960, 500)
+    rect(0, 0, 960, 500)//shadow on scene reducing
+    pop()
+
+    image(imgStars, 0, 0)
   }
-
-
 }

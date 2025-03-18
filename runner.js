@@ -39,6 +39,8 @@ function setup () {
   imgSpeech = loadImage('assets/speech.png')
   imgStart = loadImage('assets/start.png')
   imgNumbers = loadImage('assets/fieldnumbers.png')
+  imgLamp = loadImage('assets/lamp.png')
+  imgStars = loadImage('assets/stars.png')
 
   // this is true if debug.js is included
   if(debug_is_on) {

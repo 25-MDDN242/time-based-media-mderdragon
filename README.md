@@ -18,3 +18,5 @@ Spectators now yell at hare to wake up when alarm is going off. Added nap sign t
 Confetti plays at the end of each hour. The sky cycles through a series of colours indicating the hour, including a night cycle which also applies a shadow to the setting.
 
 Travelling sun graphic added to background sky during day cycle. Fixed minor issue to sync hare with field lines.
+
+Added lamp that turns on during night cycle and lights part of the field, as well as stars. Slightly lengthened the sun cycle to better suit the colours.
