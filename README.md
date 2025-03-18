@@ -6,17 +6,20 @@
 
 Update this file as you go along to record your progress.
 
+The Tortoise and the Hare Clock by Emma Nash.
 
 My idea is to create a clock based off the story of 'The Tortoise and the Hare'. It will involve the two animals racing across a track field, with hares hopping in time with the seconds, and tortoises moving in time with the minutes. The hares will disappear into a 'nap zone' at the end of the minute. The sky will change colour with the passing hours. My alarm will zoom in on a spectator yelling at the hare to wake up.
 
 Currently I have loaded in the animals and spectators, and designed the field lines using JS. The animals move in time with small animations but need to be adjusted to fit the field lines. As opposed to a zoom for the alarm, I will have all the spectators yell at the hare with a giant speech bubble. Currently they shake in anticipation when the alarm is set. 
 
-Made hare shrink in increments to 'enter' a tree burrow. Also added smooth entrance and exits of the animals to ensure they cross the start and finish lines in time with seconds/minutes.
+I have made the hare shrink in increments to 'enter' a tree burrow. I also added smooth entrance and exits of the animals to ensure they cross the start and finish lines in time with seconds/minutes.
 
-Spectators now yell at hare to wake up when alarm is going off. Added nap sign to tree, and start flag to balance the image. Changed the field numbers to a loaded in images for a cleaner look.
+The spectators now yell at hare to wake up when alarm is going off. I added a nap sign to the tree, and a start banner to balance the image. I also changed the field numbers to a loaded in image for a cleaner look.
 
-Confetti plays at the end of each hour. The sky cycles through a series of colours indicating the hour, including a night cycle which also applies a shadow to the setting.
+Confetti now plays at the end of each hour. The sky cycles through a series of colours indicating the hour, including a night cycle which also applies a shadow to the scene.
 
-Travelling sun graphic added to background sky during day cycle. Fixed minor issue to sync hare with field lines.
+I have added a travelling sun graphic to the background sky during the day cycle. I also fixed a minor issue to sync the hare with field lines.
 
-Added lamp that turns on during night cycle and lights part of the field, as well as stars. Slightly lengthened the sun cycle to better suit the colours.
+I added a lamp that turns on during the night cycle and lights part of the field, as well as stars. I also slightly lengthened the sun cycle to better suit the colours.
+
+I fixed the alarm speech bubble so that the stars do not appear in front of it.

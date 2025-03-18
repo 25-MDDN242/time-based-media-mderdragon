@@ -140,14 +140,7 @@ function draw_clock(obj) {
     if(crowdShake > 5) { //controls shake frequency
       crowdShake = 0
     }
-  } if(obj.seconds_until_alarm == 0) { //creates speech bubble when alarm is going off
-    image(imgSpeech, 0, 20)
-    fill(0)
-    noStroke()
-    textSize(25)
-    textFont('Courier New')
-    text('WAKE UP YA STUPID RABBIT!!!', 250, 50, 700, 50)
-    
+  } if(obj.seconds_until_alarm == 0) {
       if(crowdShake == 0){ //shakes spectators when alarm is going off
         image(imgSpectators, 0, 25)
         } else {
@@ -362,5 +355,14 @@ function draw_clock(obj) {
     pop()
 
     image(imgStars, 0, 0)
+  }
+
+  if(obj.seconds_until_alarm == 0) { //creates speech bubble when alarm is going off
+    image(imgSpeech, 0, 20)
+    fill(0)
+    noStroke()
+    textSize(25)
+    textFont('Courier New')
+    text('WAKE UP YA STUPID RABBIT!!!', 250, 50, 700, 50)
   }
 }
