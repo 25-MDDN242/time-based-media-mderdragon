@@ -29,6 +29,19 @@ function setup () {
   alarmActiveCheckbox.parent('checkContainer2');
   alarmActiveCheckbox.attribute('disabled','');
 
+  imgHare = loadImage('assets/hare.png');
+  imgHareJump = loadImage('assets/harejump.png');
+  imgTurtleBack = loadImage('assets/turtleback.png');
+  imgTurtleForward = loadImage('assets/turtleforward.png');
+  imgTurtleMid = loadImage('assets/turtlemid.png');
+  imgSpectators = loadImage('assets/spectators.png');
+  imgTree = loadImage('assets/tree.png')
+  imgSpeech = loadImage('assets/speech.png')
+  imgStart = loadImage('assets/start.png')
+  imgNumbers = loadImage('assets/fieldnumbers.png')
+  imgLamp = loadImage('assets/lamp.png')
+  imgStars = loadImage('assets/stars.png')
+
   // this is true if debug.js is included
   if(debug_is_on) {
     debug_setup();
