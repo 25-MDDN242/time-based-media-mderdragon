@@ -24,6 +24,6 @@ I have added a travelling sun graphic to the background sky during the day cycle
 
 I added a lamp that turns on during the night cycle and lights part of the field, as well as stars to again fill the negative space in the sky. I also slightly lengthened the sun cycle to better suit the sky colours.
 
-I fixed the alarm speech bubble so that the stars do not appear in front of it, and changed the colour of the start banner posts to a light grey as to avoid it blending with the giraffe.
+I fixed the alarm speech bubble so that the stars do not appear in front of it, and changed the colour of the start banner posts to a light grey as to avoid it blending with the giraffe. I also added a tail to the hare.
 
-I think this clock is a succesful visual depiction of the inspiring story that showcases the humour and message of 'The Tortoise and the Hare', while functioning as an abstract clock. What started as a fairly barebones images has tranformed into a dynamic, balanced, appealing and technical project. 
+I think this clock is a succesful visual depiction of the inspiring story that showcases the humour and message of 'The Tortoise and the Hare', while functioning as an abstract clock. What started as a fairly barebones images has tranformed into a dynamic, balanced, appealing and technical project. If I had more time to work on this project I would cadat my drawing style to the realism featured in vintage childrens books. 
