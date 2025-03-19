@@ -167,11 +167,42 @@ function draw_clock(obj) {
     text('09', -250, 350)
   }
 
+  if(obj.seconds == 10){
+    fill(252, 3, 3)
+    text('10', -150, -100)
+  } else if(obj.minutes == 10){
+    fill(255)
+    textStyle(BOLD)
+    text('10', -150, -100)
+  } else if(obj.hours == 10){
+    fill(200)
+    text('10', -150, -100)
+  } else {
+    fill(100)
+    text('10', -150, -100)
+  }
+
+  if(obj.seconds == 11){
+    fill(252, 3, 3)
+    text('11', -150, -50)
+  } else if(obj.minutes == 11){
+    fill(255)
+    textStyle(BOLD)
+    text('11', -150, -50)
+  } else if(obj.hours == 11){
+    fill(200)
+    text('11', -150, -50)
+  } else {
+    fill(100)
+    text('11', -150, -50)
+  }
+
   fill(100)
+  textStyle(NORMAL)
 
-  text('10', -150, -100)
+  
 
-  text('11', -150, -50)
+ 
 
   text('12', -150, 0)
 
