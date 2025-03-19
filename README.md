@@ -8,18 +8,22 @@ Update this file as you go along to record your progress.
 
 The Tortoise and the Hare Clock by Emma Nash.
 
-My idea is to create a clock based off the story of 'The Tortoise and the Hare'. It will involve the two animals racing across a track field, with hares hopping in time with the seconds, and tortoises moving in time with the minutes. The hares will disappear into a 'nap zone' at the end of the minute. The sky will change colour with the passing hours. My alarm will zoom in on a spectator yelling at the hare to wake up.
+My idea is to create a clock based off the story of 'The Tortoise and the Hare', telling the story and it's moral message in a non-literature format. It will involve the two animals racing across a track field, with hares hopping in time with the seconds, and tortoises moving in time with the minutes. The hares will disappear into a 'nap zone' at the end of the minute, in line with the story. I plan to have the sky change colour with the passing hours, and the alarm to zoom in on a spectator yelling at the hare to wake up.
 
-Currently I have loaded in the animals and spectators, and designed the field lines using JS. The animals move in time with small animations but need to be adjusted to fit the field lines. As opposed to a zoom for the alarm, I will have all the spectators yell at the hare with a giant speech bubble. Currently they shake in anticipation when the alarm is set. 
+The aesthetic of my clock is based off a whimsical, child-like style that matches illustrations you might see in a vintage picture book. The colour palette is relatively pastel but bright to adher to this, and a younger target audience. My assets, such as the animals and the tree, are handdrawn. Although most vintage children's books have fairly realistic illustration, I could not achieve that style within the time constraints of this assignment. Instead I opted for a simplistic style reminscent of old animated children's film. Here is my pinterist moodboard: https://pin.it/6pCxFDKqw
 
-I have made the hare shrink in increments to 'enter' a tree burrow. I also added smooth entrance and exits of the animals to ensure they cross the start and finish lines in time with seconds/minutes.
+Currently I have loaded in the animals and spectators, and designed the field lines using JS. The animals move in time with small jump/walk animations but need to be adjusted to fit inside the field lines. I am not sure how to achieve a zoom for the alarm, so instead I will have all the spectators yell at the hare with a giant speech bubble. Currently they shake in anticipation when the alarm is set. 
 
-The spectators now yell at hare to wake up when alarm is going off. I added a nap sign to the tree, and a start banner to balance the image. I also changed the field numbers to a loaded in image for a cleaner look.
+I have made the hare shrink in increments to 'enter' a tree burrow, the nap zone. I also added smooth entrance and exits of the animals to ensure they cross the start and finish lines in time with seconds/minutes.
 
-Confetti now plays at the end of each hour. The sky cycles through a series of colours indicating the hour, including a night cycle which also applies a shadow to the scene.
+The spectators now yell at hare to wake up when alarm is going off. I added a nap sign to the tree, and a start banner to balance the image. I also changed the field numbers to a loaded in image for a cleaner look. I wanted a blocky text style reminiscent of that on an American football field, and could best achieve the perspective slants by hand-drawing it.
 
-I have added a travelling sun graphic to the background sky during the day cycle. I also fixed a minor issue to sync the hare with field lines.
+Confetti now falls at the end of each hour, indicating clearly that the tortoise has won. The sky cycles through a series of colours indicating the hour, including a night cycle which also applies a shadow to the scene. The night cycle is not so pastel but still slightly desaturated to fit the aesthetic.
 
-I added a lamp that turns on during the night cycle and lights part of the field, as well as stars. I also slightly lengthened the sun cycle to better suit the colours.
+I have added a travelling sun graphic to the background sky during the day cycle. This helps fill the majority of the negative space in the image, and creates more visual interest as well as create another indicator for the hour. I also fixed a minor issue to sync the hare with field lines.
 
-I fixed the alarm speech bubble so that the stars do not appear in front of it.
+I added a lamp that turns on during the night cycle and lights part of the field, as well as stars to again fill the negative space in the sky. I also slightly lengthened the sun cycle to better suit the sky colours.
+
+I fixed the alarm speech bubble so that the stars do not appear in front of it, and changed the colour of the start banner posts to a light grey as to avoid it blending with the giraffe.
+
+I think this clock is a succesful visual depiction of the inspiring story that showcases the humour and message of 'The Tortoise and the Hare', while functioning as an abstract clock. What started as a fairly barebones images has tranformed into a dynamic, balanced, appealing and technical project. 

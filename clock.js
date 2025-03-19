@@ -129,7 +129,7 @@ function draw_clock(obj) {
   
   if(obj.seconds_until_alarm < 0 || obj.seconds_until_alarm === undefined) {
       image(imgSpectators, 0, 25) //still spectators
-  } else if(obj.seconds_until_alarm > 0) { //spectators shake when alarm is set
+  } else if(obj.seconds_until_alarm > 0 || obj.seconds_until_alarm == 0) { //spectators shake when alarm is set and active
       if(crowdShake == 0){
       image(imgSpectators, 0, 25)
       } else {
@@ -140,22 +140,11 @@ function draw_clock(obj) {
     if(crowdShake > 5) { //controls shake frequency
       crowdShake = 0
     }
-  } if(obj.seconds_until_alarm == 0) {
-      if(crowdShake == 0){ //shakes spectators when alarm is going off
-        image(imgSpectators, 0, 25)
-        } else {
-        image(imgSpectators, 0, 30)
-        }
-        crowdShake = crowdShake + 1
-  
-      if(crowdShake > 5) {
-        crowdShake = 0
-      }
-  }
+  } 
   
   stroke(0)
   strokeWeight(3)
-  fill(110, 83, 59)
+  fill(180)
   rect(115, 170, 10, 150)//back start post
 
   rabbitMove = map(obj.seconds, 0, 59, 0, 920)//seconds moving rabbit
@@ -256,7 +245,7 @@ function draw_clock(obj) {
   pop()
 
   stroke(0)
-  fill(110, 83, 59)
+  fill(180)
   rect(0, 340, 10, 150)//front start post
   fill(255)
   beginShape()//start banner
